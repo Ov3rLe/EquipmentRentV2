@@ -1,0 +1,71 @@
+﻿<Window x:Class="EquipmentRent.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EquipmentRent"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        
+        Title="Управление" Height="720" Width="1080">
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="175"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Foreground" Value="#2597E8"/>
+            <Setter Property="Background" Value="#4F537D"/>
+            <Setter Property="BorderBrush" Value="#2597E8"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+    </Window.Resources>
+    
+    <Grid Background="#363955">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1.2*"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Выберите опцию ниже" 
+               Grid.Column="1" Grid.Row="1"
+               Name="HintLabel"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               FontSize="40"/>
+
+        <Border Background="#4F537D"
+                Grid.Column="0" Grid.Row="0"
+                Grid.ColumnSpan="3" Grid.RowSpan="2">
+
+            <Frame Name="PageContainer" />
+        </Border>
+
+        <StackPanel Grid.Row="2" Grid.Column="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            
+            <Button Name="ClientMngButton"
+                    Content="Клиенты"
+                    Click="ChangePage"/>
+
+            <Button Name="EquipmentMngButton"
+                    Content="Оборудование"
+                    Click="ChangePage"/>
+
+            <Button Name="RentMngButton"
+                    Content="Аренда"
+                    Click="ChangePage"/>
+        </StackPanel>
+    </Grid>
+</Window>
