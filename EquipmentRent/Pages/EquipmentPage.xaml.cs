@@ -54,7 +54,7 @@ namespace EquipmentRent.Pages
 
 				if (result == MessageBoxResult.Cancel || result == MessageBoxResult.No)
 					return;
-			}
+			}//
 
 			try
 			{
