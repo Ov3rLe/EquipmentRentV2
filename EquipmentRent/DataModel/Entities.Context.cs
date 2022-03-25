@@ -36,5 +36,6 @@ namespace EquipmentRent.DataModel
         public virtual DbSet<History> History { get; set; }
         public virtual DbSet<Passport> Passport { get; set; }
         public virtual DbSet<PassportType> PassportType { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

@@ -26,6 +26,7 @@
         <AssociationConnector Association="EquipmentRentModel.FK_Equipment_EquipmentStatus" ManuallyRouted="false" />
         <AssociationConnector Association="EquipmentRentModel.FK_Equipment_EquipmentType" ManuallyRouted="false" />
         <AssociationConnector Association="EquipmentRentModel.FK_Passport_PassportType" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EquipmentRentModel.sysdiagrams" Width="1.5" PointX="5.375" PointY="5.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

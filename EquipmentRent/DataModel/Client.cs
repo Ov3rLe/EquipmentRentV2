@@ -30,6 +30,7 @@ namespace EquipmentRent.DataModel
         public int GenderID { get; set; }
         public int PassportID { get; set; }
         public bool IsDeleted { get; set; }
+        public byte[] ProfilePhoto { get; set; }
     
         public virtual Gender Gender { get; set; }
         public virtual Passport Passport { get; set; }

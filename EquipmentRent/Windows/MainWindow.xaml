@@ -49,23 +49,25 @@
 
             <Frame Name="PageContainer" />
         </Border>
-
-        <StackPanel Grid.Row="2" Grid.Column="1"
+        
+        <Viewbox Grid.Row="2" Grid.Column="1" Margin="10">
+            <StackPanel
                     Orientation="Horizontal"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center">
-            
-            <Button Name="ClientMngButton"
+
+                <Button Name="ClientMngButton"
                     Content="Клиенты"
                     Click="ChangePage"/>
 
-            <Button Name="EquipmentMngButton"
+                <Button Name="EquipmentMngButton"
                     Content="Оборудование"
                     Click="ChangePage"/>
 
-            <Button Name="RentMngButton"
+                <Button Name="RentMngButton"
                     Content="Аренда"
                     Click="ChangePage"/>
-        </StackPanel>
+            </StackPanel>
+        </Viewbox>
     </Grid>
 </Window>

@@ -14,12 +14,9 @@ using System.Windows.Shapes;
 
 namespace EquipmentRent.Windows
 {
-	/// <summary>
-	/// Interaction logic for RentListWindow.xaml
-	/// </summary>
 	public partial class RentListWindow : Window
 	{
-		public RentListWindow()
+        public RentListWindow()
 		{
 			InitializeComponent();
 		}

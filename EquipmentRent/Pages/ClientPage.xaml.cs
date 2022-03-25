@@ -29,7 +29,8 @@ namespace EquipmentRent.Pages
 		}
 
 		public void UpdateList()
-			=> ClientList.ItemsSource = ContextWrapper.Context.Client.Where((e) => !e.IsDeleted).ToList();
+			=> ClientList.ItemsSource = ContextWrapper.Context.Client
+			.Where(e => !e.IsDeleted).ToList();
 
 		private void OnClickAdd(object sender, RoutedEventArgs e)
 		{
@@ -115,6 +116,5 @@ namespace EquipmentRent.Pages
 			w.ShowDialog();
 			UpdateList();
 		}
-
 	}
 }

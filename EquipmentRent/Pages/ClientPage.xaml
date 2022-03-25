@@ -15,31 +15,99 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="6*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
         <ListView Name="ClientList" Grid.ColumnSpan="2" SelectionMode="Single"
-                  KeyDown="OnKeyDown" >
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Фамилия" Width="auto" DisplayMemberBinding="{Binding LastName}"/>
-                    <GridViewColumn Header="Имя" Width="auto" DisplayMemberBinding="{Binding FirstName}"/>
-                    <GridViewColumn Header="Отчество" Width="auto" DisplayMemberBinding="{Binding Patronymic}"/>
-                    <GridViewColumn Header="Номер телефона" Width="auto" DisplayMemberBinding="{Binding PhoneNumber}"/>
-                    <GridViewColumn Header="Почта" Width="auto" DisplayMemberBinding="{Binding Email}"/>
-                    <GridViewColumn Header="Пол" Width="auto" DisplayMemberBinding="{Binding Gender.Name}"/>
-                </GridView>
-            </ListView.View>
+                  KeyDown="OnKeyDown" Background="#4F537D"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Style="{DynamicResource ListViewTemplate}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="#5e6294"
+                            Width="450"
+                            Height="100"
+                            Margin="5,7">
+                        <Grid VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Image 
+                                Margin="5"
+                                Grid.RowSpan="3"
+                                Width="80"
+                                Height="80"
+                                Source="C:\Users\IMac11\Desktop\3ИСП9-7 Димиткин Копылов\EquipmentRent\EquipmentRent\Resources\defaultPic.png"/>
+
+                            <StackPanel Orientation="Horizontal"
+                                        Grid.Column="1" Grid.ColumnSpan="3"
+                                        Margin="5,0,0,0"
+                                        HorizontalAlignment="left"
+                                        VerticalAlignment="Center">
+
+                                <TextBlock Text="{Binding LastName}"
+                                           FontSize="17" Foreground="{StaticResource MainTextColor}" 
+                                           FontWeight="Bold"/>
+                                <TextBlock Text="{Binding FirstName}" 
+                                           FontSize="17" Foreground="{StaticResource MainTextColor}" 
+                                           FontWeight="Bold" Margin="10,0,0,0"/>
+                                <TextBlock Text="{Binding Patronymic}" 
+                                           FontSize="17" Foreground="{StaticResource MainTextColor}" 
+                                           FontWeight="Bold" Margin="10,0,0,0"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1" Grid.Row="1"
+                                        Grid.ColumnSpan="2"
+                                        Orientation="Horizontal">
+                                <TextBlock Text="{Binding Gender.Name}" 
+                                       HorizontalAlignment="left" VerticalAlignment="Center"
+                                       Margin="5,0,0,0"
+                                       FontSize="15" Foreground="{StaticResource MainTextColor}" 
+                                       FontWeight="DemiBold"/>
+
+                                <TextBlock Text="{Binding PhoneNumber}" 
+                                       HorizontalAlignment="left" VerticalAlignment="Center"
+                                       Margin="10,0,0,0"
+                                       FontSize="15" Foreground="{StaticResource MainTextColor}" 
+                                       FontWeight="DemiBold"/>
+                            </StackPanel>
+
+                            <TextBlock Text="{Binding Email}"  
+                                       HorizontalAlignment="left" VerticalAlignment="Center"
+                                       Grid.Column="1" Grid.Row="2"
+                                       Grid.ColumnSpan="2"
+                                       Margin="5,0,0,0"
+                                       FontSize="15" Foreground="{StaticResource MainTextColor}" 
+                                       FontWeight="DemiBold"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
         </ListView>
 
-        <StackPanel Grid.Row="1" Grid.Column="1"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Right"
-                    Margin="0,0,10,0">
+        <Viewbox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right"
+                 Margin="10">
+            <StackPanel Orientation="Horizontal">
 
-            <Button Content="-" Click="OnRemoveClick" Style="{DynamicResource AddRemoveBtn}"/>
-            <Button Content="+" Click="OnClickAdd" Style="{DynamicResource AddRemoveBtn}"/>
-        </StackPanel>
+                <Button Content="-" Click="OnRemoveClick" Style="{DynamicResource AddRemoveBtn}"/>
+                <Button Content="+" Click="OnClickAdd" Style="{DynamicResource AddRemoveBtn}"/>
+            </StackPanel>
+        </Viewbox>
+
     </Grid>
 </Page>
