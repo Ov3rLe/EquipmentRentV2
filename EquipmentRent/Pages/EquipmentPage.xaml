@@ -19,24 +19,75 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <ListView Name="ClientList" Grid.ColumnSpan="2">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Тип" Width="auto" DisplayMemberBinding="{Binding EquipmentType.Name}"/>
-                    <GridViewColumn Header="Наименование" Width="auto" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Статус" Width="auto" DisplayMemberBinding="{Binding EquipmentStatus.Status}"/>
-                    <GridViewColumn Header="Цена" Width="auto" DisplayMemberBinding="{Binding Price}"/>
-                </GridView>
-            </ListView.View>
+        <ListView Name="EquipmentList" Grid.ColumnSpan="2" SelectionMode="Single"
+                  KeyDown="OnKeyDown" Background="#4F537D"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Style="{DynamicResource ListViewTemplate}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="#5e6294"
+                            Width="200"
+                            Height="100"
+                            Margin="5,7">
+                        
+                        <Grid VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Orientation="Horizontal"
+                                        Margin="10,0,0,0"
+                                        HorizontalAlignment="left"
+                                        VerticalAlignment="Center">
+
+                                <TextBlock Text="{Binding Name}"
+                                           FontSize="17" Foreground="{StaticResource MainTextColor}" 
+                                           FontWeight="Bold"/>
+
+                                <TextBlock Text="{Binding Price}" 
+                                           FontSize="17" Foreground="{StaticResource MainTextColor}" 
+                                           FontWeight="Bold" Margin="10,0,0,0"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="1"
+                                        Orientation="Horizontal">
+
+                                <TextBlock Text="{Binding EquipmentType.Name}" 
+                                       HorizontalAlignment="left" VerticalAlignment="Center"
+                                       Margin="10,0,0,0"
+                                       FontSize="15" Foreground="{StaticResource MainTextColor}" 
+                                       FontWeight="DemiBold"/>
+
+                                <TextBlock Text="{Binding EquipmentStatus.Status}" 
+                                       HorizontalAlignment="left" VerticalAlignment="Center"
+                                       Margin="10,0,0,0"
+                                       FontSize="15" Foreground="{StaticResource MainTextColor}" 
+                                       FontWeight="DemiBold"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
         </ListView>
 
-        <StackPanel Grid.Row="1" Grid.Column="1"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Right"
-                    Margin="0,0,10,0">
+        <Viewbox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right"
+                 Margin="10">
+            <StackPanel Orientation="Horizontal">
 
-            <Button Content="-" Click="OnRemove" Style="{DynamicResource AddRemoveBtn}"/>
-            <Button Content="+" Click="OnAdd" Style="{DynamicResource AddRemoveBtn}"/>
-        </StackPanel>
+                <Button Content="-" Click="OnRemoveClick" Style="{DynamicResource AddRemoveBtn}"/>
+                <Button Content="+" Click="OnClickAdd" Style="{DynamicResource AddRemoveBtn}"/>
+            </StackPanel>
+        </Viewbox>
     </Grid>
 </Page>

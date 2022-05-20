@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 using EquipmentRent.DataModel;
 using EquipmentRent.HelperClasses;
+using EquipmentRent.Windows;
 
 namespace EquipmentRent.Pages
 { 
@@ -26,17 +27,102 @@ namespace EquipmentRent.Pages
 			UpdateList();
 		}
 
+		private void OnRemoveClick(object sender, RoutedEventArgs e)
+		{
+			RemoveItem();
+		}
+
+		private void OnClickAdd(object sender, RoutedEventArgs e)
+		{
+			var w = new EquipmentAddWindow();
+			w.ShowDialog();
+			UpdateList();
+		}
+
+		private void OnKeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.Key == Key.Back || e.Key == Key.Delete)
+				RemoveItem();
+
+			if (e.Key == Key.Enter)
+				ModifyItem();
+		}
+
+		private void RemoveItem()
+		{
+			if (EquipmentList.SelectedItem == null)
+			{
+				MessageBox.Show(
+					"Выберите запись для удаления.",
+					"Внимание",
+					MessageBoxButton.OK,
+					MessageBoxImage.Exclamation);
+
+				return;
+			}
+
+			else
+			{
+				var result = MessageBox.Show(
+					"Вы действительно хотите удалить эту запись?",
+					"Подтверждение",
+					MessageBoxButton.YesNo,
+					MessageBoxImage.Question);
+
+				if (result == MessageBoxResult.Cancel || result == MessageBoxResult.No)
+					return;
+			}
+
+			try
+			{
+				ContextWrapper.Context.Equipment.Remove(EquipmentList.SelectedItem as Equipment);
+				ContextWrapper.Context.SaveChanges();
+			}
+
+			catch (Exception ex)
+			{
+				MessageBox.Show(
+					"Что-то пошло не так.\nНе удалось удалить запись.",
+					"Ошибка",
+					MessageBoxButton.OK,
+					MessageBoxImage.Error);
+
+				return;
+			}
+
+			MessageBox.Show("Запись успешно удалена.");
+			UpdateList();
+		}
+
+		private void ModifyItem()
+		{
+			if (EquipmentList.SelectedItem == null)
+			{
+				MessageBox.Show(
+					"Выберите запись для изменения.",
+					"Внимание",
+					MessageBoxButton.OK,
+					MessageBoxImage.Exclamation);
+
+				return;
+			}
+
+			var w = new EquipmentModifyWindow(EquipmentList.SelectedItem as Equipment);
+			w.ShowDialog();
+			UpdateList();
+		}
+
 		public void UpdateList()
-			=> ClientList.ItemsSource = ContextWrapper.Context.Equipment.Where((e) => !e.IsDeleted).ToList();
+			=> EquipmentList.ItemsSource = ContextWrapper.Context.Equipment.Where((e) => !e.IsDeleted).ToList();
 
 		private void OnAdd(object sender, RoutedEventArgs e)
 		{
-
+		
 		}
 
 		private void OnRemove(object sender, RoutedEventArgs e)
 		{
-			var selected = ClientList.SelectedItem;
+			var selected = EquipmentList.SelectedItem;
 
 			if (selected == null)
 			{

@@ -22,12 +22,15 @@
         <ListView Name="ClientList" Grid.ColumnSpan="2" SelectionMode="Single"
                   KeyDown="OnKeyDown" Background="#4F537D"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" Style="{DynamicResource ListViewTemplate}">
+            
             <ListView.ItemTemplate>
                 <DataTemplate>
+                    
                     <Border Background="#5e6294"
                             Width="450"
                             Height="100"
                             Margin="5,7">
+                        
                         <Grid VerticalAlignment="Center">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -46,7 +49,7 @@
                                 Grid.RowSpan="3"
                                 Width="80"
                                 Height="80"
-                                Source="C:\Users\IMac11\Desktop\3ИСП9-7 Димиткин Копылов\EquipmentRent\EquipmentRent\Resources\defaultPic.png"/>
+                                Source="../*Resources/defaultPic.png"/>
 
                             <StackPanel Orientation="Horizontal"
                                         Grid.Column="1" Grid.ColumnSpan="3"
@@ -57,9 +60,11 @@
                                 <TextBlock Text="{Binding LastName}"
                                            FontSize="17" Foreground="{StaticResource MainTextColor}" 
                                            FontWeight="Bold"/>
+                                
                                 <TextBlock Text="{Binding FirstName}" 
                                            FontSize="17" Foreground="{StaticResource MainTextColor}" 
                                            FontWeight="Bold" Margin="10,0,0,0"/>
+                                
                                 <TextBlock Text="{Binding Patronymic}" 
                                            FontSize="17" Foreground="{StaticResource MainTextColor}" 
                                            FontWeight="Bold" Margin="10,0,0,0"/>
@@ -88,9 +93,13 @@
                                        Margin="5,0,0,0"
                                        FontSize="15" Foreground="{StaticResource MainTextColor}" 
                                        FontWeight="DemiBold"/>
+                            
                         </Grid>
+                        
                     </Border>
+                    
                 </DataTemplate>
+                
             </ListView.ItemTemplate>
 
             <ListView.ItemsPanel>

@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "C:\Users\IMac11\Desktop\3ИСП9-7 Димиткин Копылов\EquipmentRent\EquipmentRent\DataModel\Entities.edmx" включено. 
+﻿// Создание кода T4 для модели "C:\Users\Даниил\Source\Repos\EquipmentRentV2\EquipmentRent\DataModel\Entities.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.
